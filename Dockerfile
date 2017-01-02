@@ -14,3 +14,11 @@ RUN git clone https://github.com/sstephenson/ruby-build.git $HOME/.rbenv/plugins
 RUN $HOME/.rbenv/plugins/ruby-build/install.sh
 RUN echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh # or /etc/profile
 RUN echo 'eval "$(rbenv init -)"' >> $HOME/.bashrc
+
+# Install ruby 2.4.0
+RUN rbenv install 2.4.0 --verbose
+RUN rbenv global 2.4.0
+
+# Install Bundler
+RUN echo 'gem: --no-rdoc --no-ri' >> $HOME/.gemrc
+RUN gem install bundler
